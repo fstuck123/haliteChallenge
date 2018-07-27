@@ -10,3 +10,6 @@ https://github.com/HaliteChallenge/Halite-II/tree/master/airesources/Python3
 
 how to test a bot frequently
 https://halite.io/learn-programming-challenge/halite-cli-and-tools/halite-client-tools
+
+Game rules:
+https://halite.io/learn-programming-challenge/basic-game-rules/game-rules-deep-dive
