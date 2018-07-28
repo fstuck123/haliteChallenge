@@ -8,7 +8,7 @@ from entities.Player import Player
 
 
 
-file = "sample1"
+file = "2018-07-28 18:39:14.334851_1"
 state = HaliteStates();
 persistence = Files("/home/fstuck/repros/hunger-games/haliteChallenge/data/");
 p = Player(4)
@@ -30,6 +30,4 @@ persistence.file = file
 stateBot = persistence.accessFile(file)
 n=0;
 
-haliteSavedStates = persistence.accessFile("sample55")
 
-n =3;

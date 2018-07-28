@@ -3,9 +3,6 @@ import os
 import random
 import datetime
 from states.HaliteStates import HaliteStates
-from entities.Planet import Planet
-from entities.Player import Player
-from entities.Ship import Ship
 
 
 class Files:
