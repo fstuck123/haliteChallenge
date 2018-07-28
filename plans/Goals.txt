@@ -1,0 +1,7 @@
+This file should contain the goals that the team members expect from the project.
+
+- learn RL basics 
+- get a deeper understanding of neural networks 
+- modularize RL framework so we can reuse it in future projects or a new Halite 3 challenge
+
+
