@@ -1,0 +1,16 @@
+This file maintains a list of things to do for the project and what should  be done first.
+
+
+
+1) Create a state-representation of the halite game. 
+
+2) Get debugging information out of the bots. These are run in command line and relieable debugging information have to be logged properly for analysis.
+
+3) What prediction system should we try to implement. Some people say, that neural nets can take to long for a prediction. We therefore must be carefull how we fill the gpu with data.
+
+4) Create a reinforcement environment where different algorithms can be made exchangable. 
+
+ 
+
+
+
