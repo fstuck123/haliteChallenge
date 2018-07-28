@@ -17,6 +17,13 @@ from executables import hlt
 # Then let's import the logging module so we can print out information
 import logging
 
+from persistence.Files import  Files
+from states.HaliteStates import HaliteStates
+
+persistence = Files("/home/fstuck/repros/hunger-games/haliteChallenge/data/");
+states = HaliteStates();
+
+
 # GAME START
 # Here we define the bot's name as Settler and initialize the game, including communication with the Halite engine.
 game = hlt.Game("Settler")
@@ -27,6 +34,26 @@ while True:
     # TURN START
     # Update the map for the new turn and get the latest version
     game_map = game.update_map()
+
+    # map game data to states and entities
+    allPlayers = game_map.all_players();
+    playerList = []
+    shipList =[]
+    planetList =[]
+    for p in allPlayers:
+        playerList.append(p);
+        for s in game_map.get_player(p.id).all_ships():
+            shipList.append(s)
+    for p in game_map.all_planets():
+        planetList.append(p)
+    states.addPlayer(playerList);
+
+
+
+
+
+
+
 
     # Here we define the set of commands to be sent to the Halite engine at the end of the turn
     command_queue = []
@@ -72,4 +99,6 @@ while True:
     # Send our set of commands to the Halite engine for this turn
     game.send_command_queue(command_queue)
     # TURN END
+
+persistence.saveState(states)
 # GAME END
