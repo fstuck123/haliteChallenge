@@ -25,6 +25,6 @@ class Planet:
        self.isFull = isFull;
 
 
-    
+
 
 
