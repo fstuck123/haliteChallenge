@@ -11,6 +11,7 @@ from entities.Player import Player
 file = "sample1"
 state = HaliteStates();
 persistence = Files("/home/fstuck/repros/hunger-games/haliteChallenge/data/");
+p = Player(4)
 
 '''
 playerList =[]
