@@ -20,8 +20,12 @@ import logging
 from persistence.Files import  Files
 from states.HaliteStates import HaliteStates
 
+from entities.Planet import Planet
+from entities.Player import Player
+from entities.Ship import Ship
+
 persistence = Files("/home/fstuck/repros/hunger-games/haliteChallenge/data/");
-persistence.file = "sample1";
+persistence.file = "sample?1";
 states = HaliteStates();
 
 
@@ -50,7 +54,7 @@ while True:
     planetList =[]
     playerString = ""
     for p in allPlayers:
-        playerList.append(p);
+        playerList.append(Player(p.id));
         playerString += str(p.id) + " : "
         for s in game_map.get_player(p.id).all_ships():
             shipList.append(s)
@@ -62,6 +66,8 @@ while True:
     states.addPlanets(planetList);
     states.addShips(shipList)
 
+    persistence.saveState(states, turn)
+    turn = turn + 1
 
 
 
@@ -116,8 +122,7 @@ while True:
     # or else nothing is saved
     # TURN END
     states.addCommand(command_queue);
-    persistence.saveState(states,turn )
-    turn = turn +1
+
     logging.info("Files were written every turn");
 
 

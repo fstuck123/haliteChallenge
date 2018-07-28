@@ -1,6 +1,7 @@
 import datetime
-from executables import hlt
-from executables.hlt import entity
+from entities.Planet import Planet
+from entities.Player import Player
+from entities.Ship import Ship
 
 class HaliteStates:
     # every entry corresponds to one turn, so it is a list of lists

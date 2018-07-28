@@ -3,7 +3,9 @@ import os
 import random
 import datetime
 from states.HaliteStates import HaliteStates
-
+from entities.Planet import Planet
+from entities.Player import Player
+from entities.Ship import Ship
 
 
 class Files:
@@ -28,11 +30,11 @@ class Files:
 
     #automatically create filename for the state
     def saveStateRandom(self, haliteState):
-        fileSystem = open(self.directory + self.file, "wb+");
+        fileSystem = open(self.directory + self.file, "wb");
         pickle.dump(haliteState, fileSystem);
         fileSystem.close()
 
     def saveState(self, haliteState, num):
-        fileSystem = open(self.directory + self.file + str(num), "wb+");
+        fileSystem = open(self.directory + self.file + str(num), "wb");
         pickle.dump(haliteState, fileSystem);
         fileSystem.close()
