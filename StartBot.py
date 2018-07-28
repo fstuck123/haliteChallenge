@@ -21,6 +21,7 @@ from persistence.Files import  Files
 from states.HaliteStates import HaliteStates
 
 persistence = Files("/home/fstuck/repros/hunger-games/haliteChallenge/data/");
+persistence.file = "sample";
 states = HaliteStates();
 
 
@@ -40,13 +41,19 @@ while True:
     playerList = []
     shipList =[]
     planetList =[]
+    playerString =""
     for p in allPlayers:
         playerList.append(p);
+        playerString += str(p.id) + " : "
         for s in game_map.get_player(p.id).all_ships():
             shipList.append(s)
     for p in game_map.all_planets():
         planetList.append(p)
+
+    logging.info(playerString)
     states.addPlayer(playerList);
+    states.addPlanets(planetList);
+    states.addShips(shipList)
 
 
 
@@ -98,7 +105,12 @@ while True:
 
     # Send our set of commands to the Halite engine for this turn
     game.send_command_queue(command_queue)
+    #because the bots are called by a halite application, the changes must be written to file every turn.
+    # or else nothing is saved
     # TURN END
+    states.addCommand(command_queue);
+    persistence.saveStateRandom(states)
+    logging.info("Files were written every turn");
 
-persistence.saveState(states)
+
 # GAME END

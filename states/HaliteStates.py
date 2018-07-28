@@ -21,7 +21,7 @@ class HaliteStates:
     def addShips(self, shipList):
         self.ships.append(shipList);
 
-    def addPlantes(self, planetList):
+    def addPlanets(self, planetList):
         self.planets.append(planetList);
 
     def addCommand(self, command):
