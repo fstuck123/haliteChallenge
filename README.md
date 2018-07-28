@@ -13,3 +13,7 @@ https://halite.io/learn-programming-challenge/halite-cli-and-tools/halite-client
 
 Game rules:
 https://halite.io/learn-programming-challenge/basic-game-rules/game-rules-deep-dive
+
+Halite ML considerations (Forum):
+http://forums.halite.io/t/do-the-top-players-use-ml/718/6
+
