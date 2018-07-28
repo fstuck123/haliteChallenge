@@ -1,0 +1,25 @@
+This file should keep track what prediction systems we come up with in the course of the project. 
+
+
+
+
+Conceptual Solutions:
+1) RL for high level strategies (conquer planets) and heuristics/oldschool methods for the assignment of ressources.
+
+2) RL for every ship that evaluates the best moves.
+
+3) oldschool methodds like min-max or heuristics
+
+
+
+RL Considerations:
+- total number of turns is relativly low at around 295 and the livespan of a ship is small, so there is no preference for Monte-Carlo or Temporal-Difference Methods (except Monte-Carlo might be better for starters, because TD relies on estimates of the actions which we are currently learning)
+
+- implement a epsilon-greedy exploration 
+
+- actions a ship as an agent can take: thrust(magnitude, angle), dock undock. In total there are 5 actions the ships can take and which we must predict.
+
+- goal to maximize/reward: total earned points for the player
+
+
+
