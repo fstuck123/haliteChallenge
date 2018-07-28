@@ -6,14 +6,18 @@ from persistence.Files import Files
 
 
 
+file = "sample1"
 state = HaliteStates();
-print(state.timestamp)
-
-
 persistence = Files("/home/fstuck/repros/hunger-games/haliteChallenge/data/");
-states = persistence.accessFile("sample");
+
+state.addPlayer(Player(3))
+
+persistence.saveStateRandom(state)
 
 
+stateLoaded = persistence.accessFile(file)
+
+stateBot = persistence.accessFile("sample")
 n=0;
 
 

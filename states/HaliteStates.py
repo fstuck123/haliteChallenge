@@ -1,5 +1,6 @@
 import datetime
-
+from executables import hlt
+from executables.hlt import entity
 
 class HaliteStates:
     # every entry corresponds to one turn, so it is a list of lists

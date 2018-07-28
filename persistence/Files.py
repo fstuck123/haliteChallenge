@@ -5,6 +5,7 @@ import datetime
 from states.HaliteStates import HaliteStates
 
 
+
 class Files:
     directory =""
     file =""
@@ -28,5 +29,10 @@ class Files:
     #automatically create filename for the state
     def saveStateRandom(self, haliteState):
         fileSystem = open(self.directory + self.file, "wb+");
+        pickle.dump(haliteState, fileSystem);
+        fileSystem.close()
+
+    def saveState(self, haliteState, num):
+        fileSystem = open(self.directory + self.file + str(num), "wb+");
         pickle.dump(haliteState, fileSystem);
         fileSystem.close()

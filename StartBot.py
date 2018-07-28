@@ -21,7 +21,7 @@ from persistence.Files import  Files
 from states.HaliteStates import HaliteStates
 
 persistence = Files("/home/fstuck/repros/hunger-games/haliteChallenge/data/");
-persistence.file = "sample";
+persistence.file = "sample1";
 states = HaliteStates();
 
 
@@ -30,6 +30,13 @@ states = HaliteStates();
 game = hlt.Game("Settler")
 # Then we print our start message to the logs
 logging.info("Starting my Settler bot!")
+
+some =[ 3, 4,5]
+states.addPlayer(some)
+persistence.saveStateRandom(states)
+persistence.file = "sample";
+
+turn =0;
 
 while True:
     # TURN START
@@ -41,7 +48,7 @@ while True:
     playerList = []
     shipList =[]
     planetList =[]
-    playerString =""
+    playerString = ""
     for p in allPlayers:
         playerList.append(p);
         playerString += str(p.id) + " : "
@@ -109,7 +116,8 @@ while True:
     # or else nothing is saved
     # TURN END
     states.addCommand(command_queue);
-    persistence.saveStateRandom(states)
+    persistence.saveState(states,turn )
+    turn = turn +1
     logging.info("Files were written every turn");
 
 
