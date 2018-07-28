@@ -7,6 +7,7 @@ class HaliteStates:
     players =[];
     ships = [];
     planets =[];
+    commands =[]
 
 
     def __init__(self):
@@ -22,6 +23,9 @@ class HaliteStates:
 
     def addPlantes(self, planetList):
         self.planets.append(planetList);
+
+    def addCommand(self, command):
+        self.commands.append(command)
 
 
 
