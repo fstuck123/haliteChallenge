@@ -3,8 +3,10 @@ This file maintains a list of things to do for the project and what should  be d
 
 
 1) Create a state-representation of the halite game. 
+-DONE: state representation is done 
 
 2) Get debugging information out of the bots. These are run in command line and relieable debugging information have to be logged properly for analysis.
+-DONE: in every round the state is saved to disk. 2 bots running concurrently dont interfere with each other (since time stamps and a randomized number is used for index)
 
 3) What prediction system should we try to implement. Some people say, that neural nets can take to long for a prediction. We therefore must be carefull how we fill the gpu with data.
 
