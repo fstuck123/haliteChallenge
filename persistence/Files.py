@@ -23,3 +23,7 @@ class Files:
         fileSystem  = open(self.directory + file, "wb");
         pickle.dump(haliteState, fileSystem);
 
+
+
+    # automatically create filename for the state
+    # def saveState(self, haliteState):
