@@ -8,6 +8,10 @@ https://halite.io/
 Halite game engine:
 https://github.com/HaliteChallenge/Halite-II/tree/master/airesources/Python3
 
+what methods, attributes do elements in halite have?
+https://halite.io/learn-programming-challenge/downloads-and-starter-kits/create-new-starter-kit
+
+
 how to test a bot frequently
 https://halite.io/learn-programming-challenge/halite-cli-and-tools/halite-client-tools
 
