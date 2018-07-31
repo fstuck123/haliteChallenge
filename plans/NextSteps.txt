@@ -12,7 +12,7 @@ This file maintains a list of things to do for the project and what should  be d
 
 4) Create a reinforcement environment where different algorithms can be made exchangable. 
 
- 
+5) Implement the state in a network.
 
 
 
