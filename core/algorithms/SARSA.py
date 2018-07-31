@@ -21,4 +21,9 @@ class SARSA:
             nextState = self.environment.getNextState(action);
             reward = self.environment.getReward();
             self.actionValueFunction.update(state, action, nextState, self.stateValueFunction, self.learningRate);
+            state = nextState;
+            self.learningRate.decrease();
+            self.epsilon.decrease();
+
+
 
