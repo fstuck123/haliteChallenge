@@ -31,7 +31,7 @@ class Files:
         pickle.dump(haliteState, fileSystem);
         fileSystem.close()
 
-    def saveState(self, haliteState, num):
-        fileSystem = open(self.directory + self.file + str(num), "wb");
+    def saveObject(self, haliteState, fileName):
+        fileSystem = open(self.directory + fileName, "wb");
         pickle.dump(haliteState, fileSystem);
         fileSystem.close()
