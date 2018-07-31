@@ -10,6 +10,10 @@ class Environment(object, metaclass=abc.ABCMeta):
     def getReward(cls):
         raise NotImplementedError("reward not implemented")
 
+    @abc.abstractclassmethod
+    def init(cls):
+        raise NotImplementedError("init Environment must be implemented. Return is the first state")
+
 
     @abc.abstractclassmethod
     def terminated(cls):
