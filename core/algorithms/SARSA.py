@@ -1,16 +1,16 @@
-
-
-
+from core.implementations.AlgorithmStateImpl import, AlgorithmStateImpl
+from persistence.Files import Files
 
 
 class SARSA:
-    def __init__(self, policy, actionValueFunction, stateValueFunction, learningRate, epsilon, environment):
+    def __init__(self, policy, actionValueFunction, stateValueFunction, learningRate, epsilon, environment, experimentID):
         self.policy = policy
         self.actionValueFunction = actionValueFunction
         self.stateValueFunction = stateValueFunction
         self.learningRate = learningRate
         self.epsilon = epsilon
         self.environment = environment
+        self.filename = experimentID
 
 
     def execute(self):
@@ -25,5 +25,6 @@ class SARSA:
             self.learningRate.decrease();
             self.epsilon.decrease();
 
-
+        algState = AlgorithmStateImpl().createSnapshot();
+        Files().saveObject(algState, self.filename)
 
