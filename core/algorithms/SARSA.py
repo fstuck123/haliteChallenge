@@ -1,4 +1,5 @@
 from core.implementations.AlgorithmStateImpl import, AlgorithmStateImpl
+from core.wrapper.Action import Action
 from persistence.Files import Files
 
 
@@ -14,8 +15,9 @@ class SARSA:
 
 
     def execute(self):
-        self.actionValueFunction.init();
+        sampleAction = Action();
         state = self.environment.init();
+        self.actionValueFunction.init(state, sampleAction);
         while not self.environment.terminated():
             action = self.policy.getEpsilonGreedyAction(state, actionValueFunction=self.actionValueFunction)
             nextState = self.environment.getNextState(action);
