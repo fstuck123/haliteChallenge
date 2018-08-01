@@ -3,15 +3,15 @@ import abc
 
 class Policy(object, metaclass=abc.ABCMeta):
 
-    @abc.abstractclassmethod
-    def init(cls, greedyPolicy, epsilonPolicy):
+    @abc.abstractmethod
+    def init(self, greedyPolicy, epsilonPolicy):
         raise NotImplementedError("init must be implemented")
 
-    @abc.abstractclassmethod
-    def getEpsilonGreedyAction(cls, state, actionValueFunction):
+    @abc.abstractmethod
+    def getEpsilonGreedyAction(self, state, actionValueFunction):
         raise NotImplementedError("epsilon greedy must be added")
 
 
-    @abc.abstractclassmethod
-    def getGreedyAction(cls, state, actionValueFunciton):
+    @abc.abstractmethod
+    def getGreedyAction(self, state, actionValueFunciton):
         raise NotImplementedError("greedy algorithm must be added")

@@ -2,6 +2,6 @@ import abc
 
 class LearningRate(object, metaclass=abc.ABCMeta):
 
-    @abc.abstractclassmethod
-    def decrease(cls):
+    @abc.abstractmethod
+    def decrease(self):
         raise NotImplementedError("Decrease Learningrate is not implemented yet")
