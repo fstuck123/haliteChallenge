@@ -8,7 +8,7 @@ class ActionValueFunction(object, metaclass=abc.ABCMeta):
 
 
     @abc.abstractmethod
-    def update(self, state, action, nextState, stateValueFunction, learningRate):
+    def update(self, state, action, nextState, stateValueFunction, learningRate, targetValue):
         raise NotImplementedError("update ActionValueFunction not implemented yet")
 
 
