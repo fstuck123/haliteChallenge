@@ -13,6 +13,7 @@ class ActionValueFunctionImpl1(ActionValueFunction):
         self.x = tf.placeholder(tf.float32, [None, self.inputDimensions])
         self.y = tf.placeholder(tf.float32, [None, self.outputDimensions])
 
+
         widthFilter = 5;
         padding = 0
         stride = 2
@@ -52,23 +53,43 @@ class ActionValueFunctionImpl1(ActionValueFunction):
         }
 
         # define net
-        conv1 = self.conv(self.x, self.weights['wc1'], self.bias['bc1'], stride);
-        conv1 = self.maxpool2d(conv1, k=poolSize)
-        conv2 = self.conv(conv1, self.weights['wc2'], self.bias['bc2'], stride);
-        conv2 = self.maxpool2d(conv2, k=poolSize)
+        self.conv1 = self.conv(self.x, self.weights['wc1'], self.bias['bc1'], stride);
+        self.conv1 = self.maxpool2d(self.conv1, k=poolSize)
+        self.conv2 = self.conv(self.conv1, self.weights['wc2'], self.bias['bc2'], stride);
+        self.conv2 = self.maxpool2d(self.conv2, k=poolSize)
 
         #reshape conv2 to be a two dimensional input
-        fc1 = tf.reshape(conv2, [-1, self.weights['wd1'].get_shape().as_list()[0]])
+        self.fc1 = tf.reshape(self.conv2, [-1, self.weights['wd1'].get_shape().as_list()[0]])
 
-        fc1 = tf.add(tf.matmul(fc1, self.weights['wd1']), self.bias['bd1'])
-        fc1 = tf.nn.relu(fc1)
+        self.fc1 = tf.add(tf.matmul(self.fc1, self.weights['wd1']), self.bias['bd1'])
+        self.fc1 = tf.nn.relu(self.fc1)
 
         dropout = 0.5
-        fc1 = tf.nn.dropout(fc1, dropout)
+        self.fc1 = tf.nn.dropout(self.fc1, dropout)
 
-        self.out = tf.add(tf.matmul(fc1, self.weights['out']), self.bias['out'])
+        self.out = tf.add(tf.matmul(self.fc1, self.weights['out']), self.bias['out'])
+
+        # calculate Error and optimize error (no logs or softmax)
+        self.error = tf.reduce_sum(tf.square(self.out - self.y))
+        self.optimizer = tf.train.AdamOptimizer(learning_rate=0.01).minimize(self.error)
+
+        # init tensorflow
+        self.gpuMemFraction = 0.05
+        self.gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=self.gpuMemFraction)
+        self.sess = tf.Session(config=tf.ConfigProto(allow_soft_placement=True, gpu_options=self.gpu_options))
+        self.init = tf.global_variables_initializer()
+        self.sess.run(self.init)
 
 
+
+    def evaluate(self, state):
+        input = state.getValue();
+        prediction = self.sess.run(self.out, feed_dict={self.x : input})
+        return prediction;
+
+
+    def update(self, state, action, nextState, stateValueFunction, learningRate, targetValue):
+        self.sess.run(self.optimizer, feed_dict={self.y : targetValue})
 
 
 
