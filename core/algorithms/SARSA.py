@@ -1,4 +1,4 @@
-from core.implementations.AlgorithmStateImpl import, AlgorithmStateImpl
+from core.implementations.AlgorithmStateImpl import AlgorithmStateImpl
 from core.wrapper.Action import Action
 from persistence.Files import Files
 
